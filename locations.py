@@ -1,30 +1,30 @@
-import random 
+import random
+import json
 
-locationFile= open('locations.txt', 'r')
-town_list = locationFile.readlines()
+def gen_locations():
+    with open('locations.txt', 'r') as location_file:
+        town_list = [line.strip() for line in location_file.readlines()]
 
-
-# The function that generates the  location code and the location 
-def genLocations():
-    
-    
     locations = []
-    
-    for i in range(1,31):
+
+    for i in range(1, 31):
         location_code = f'location-{i}'
-        # select  a random line from  file  containing locations
-        description =  random.choice(town_list)
-        location_tuple = (location_code,description)
-        locations.append(location_tuple)             
+        description = random.choice(town_list)
+        location_tuple = (location_code, description)
+        locations.append(location_tuple)
 
-    # Remove leading and trailing spaces from the second element of each tuple
-    cleaned_locations = [(location[0], location[1].strip()) for location in locations]      
+    cleaned_locations = [(location[0], location[1].strip()) for location in locations]
 
-        
     return cleaned_locations
 
-# joe = genLocations()
+def write_json_to_file(file_path, json_data):
+    with open(file_path, 'w') as file:
+        json.dump(json_data, file, indent=2)
 
-# print(joe)
+def main():
+    json_data_to_write = gen_locations()
+    output_file = 'locations.json'
+    write_json_to_file(output_file, json_data_to_write)
 
-
+if __name__ == "__main__":
+    main()
