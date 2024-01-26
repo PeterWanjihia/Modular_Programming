@@ -1,6 +1,8 @@
 import random
 import json
 
+
+# The function that  generates the product code, its description and  inventory number
 def genProducts():
     products = []
 
@@ -15,10 +17,10 @@ def genProducts():
     return products
 
 # Generate products
-result = genProducts()
+# result = genProducts()
 
-# Convert the result to a JSON-formatted string
-json_result = json.dumps(result, indent=2)
+# # Convert the result to a JSON-formatted string
+# json_result = json.dumps(result, indent=2)
 
-# Print the JSON-formatted string
-print(json_result)
+# # Print the JSON-formatted string
+# print(json_result)
